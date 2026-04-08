@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kasir d'Browns</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <img src="logo.png" class="logo">
+        <h1>TOKO d’Browns Generation</h1>
+    </div>
+
+    <div class="content">
+
+        <!-- KIRI -->
+        <div class="left">
+
+            <div class="menu-box">
+
+                <button onclick="tambah('Mocachino',12000)">mochacino 10.000</button>
+                <button onclick="tambah('Matcha',12000)">matcha 12.000</button>
+                <button onclick="tambah('Toping Boba',2000)">Toping 2.000</button>
+
+                <button onclick="tambah('Oreo',12000)">oreo 12.000</button>
+                <button onclick="tambah('Milk Boba',10000)">milk boba 10.000</button>
+                <button class="selesai" onclick="selesai()">Selesai</button>
+
+            </div>
+
+            <input type="number" id="uang" placeholder="uang pelanggan">
+            <input type="text" id="kembalian" placeholder="jumlah kembalian" readonly>
+
+            <h2>Total: Rp <span id="total">0</span></h2>
+        </div>
+
+        <!-- KANAN -->
+        <div class="right">
+            <h2>Pesanan</h2>
+            <ul id="list"></ul>
+
+            <button class="kirim" onclick="kirimData()">Insert data penjualan</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

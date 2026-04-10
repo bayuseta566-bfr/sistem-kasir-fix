@@ -20,6 +20,7 @@ function render() {
     });
 
     document.getElementById("total").innerText = total;
+    generateQR();
 }
 
 // HITUNG KEMBALIAN
@@ -33,16 +34,19 @@ document.getElementById("uang").addEventListener("input", function() {
 // KIRIM DATA
 async function kirimData(namaPelanggan) {
 
-    const url = "https://script.google.com/macros/s/AKfycbwtYWJ0bCVCY9JSVT5hIT5qP31fSgw9QebonGiWKgc4VTNoV1e_6Lpw80rj3G8rmnVt/exec";
+    const url = "https://script.google.com/macros/s/AKfycbxmxRuN_avgWZdjCmOjZzW8cifZQ0WY5J5c8fiIXId5hvJNDsmTy8dOndt8UpMK3Lwv/exec";
 
-    let data = pesanan.map(p => ({
+    let data = {
         pelanggan: namaPelanggan,
-        nama: p.nama,
-        harga: p.harga
-    }));
+        pesanan: pesanan,
+        total: total
+    };
 
     await fetch(url, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
     });
 }
@@ -66,6 +70,8 @@ function selesai() {
 
     alert("Pesanan selesai!");
 
+    printStruk(namaPelanggan);
+
     // RESET
     pesanan = [];
     total = 0;
@@ -77,3 +83,25 @@ function selesai() {
 
     render();
 }
+function printStruk(namaPelanggan) {
+
+    let isi = `
+    <h2>STRUK PEMBELIAN</h2>
+    <p>Nama: ${namaPelanggan}</p>
+    <hr>
+    `;
+
+    pesanan.forEach(p => {
+        isi += `<p>${p.nama} - Rp ${p.harga}</p>`;
+    });
+
+    isi += `
+    <hr>
+    <h3>Total: Rp ${total}</h3>
+    `;
+
+    let win = window.open("", "", "width=300,height=500");
+    win.document.write(isi);
+    win.print();
+}
+

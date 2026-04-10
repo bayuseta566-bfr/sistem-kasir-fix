@@ -51,41 +51,7 @@ async function kirimData(namaPelanggan) {
     });
 }
 
-function printStruk(namaPelanggan) {
 
-    let isi = `
-    <h2>STRUK PEMBELIAN</h2>
-    <p>Nama: ${namaPelanggan}</p>
-    <hr>
-    `;
-
-    pesanan.forEach(p => {
-        isi += `<p>${p.nama} - Rp ${p.harga}</p>`;
-    });
-
-    isi += `
-    <hr>
-    <h3>Total: Rp ${total}</h3>
-    `;
-
-    let win = window.open("", "", "width=300,height=500");
-    win.document.write(isi);
-    win.print();
-}
-
-function generateQR() {
-
-    let qrContainer = document.getElementById("qrcode");
-    qrContainer.innerHTML = "";
-
-    if (total <= 0) return;
-
-    new QRCode(qrContainer, {
-        text: "TOTAL:" + total,
-        width: 150,
-        height: 150
-    });
-}
 
 // SELESAI
 function selesai() {

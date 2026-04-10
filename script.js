@@ -21,7 +21,7 @@ function render() {
 
     document.getElementById("total").innerText = total;
     
-    generateQR();
+    
 }
 
 // HITUNG KEMBALIAN
@@ -83,13 +83,3 @@ function selesai() {
     render();
 }
 
-//qr
-function generateQR() {
-    document.getElementById("qrcode").innerHTML = "";
-
-    new QRCode(document.getElementById("qrcode"), {
-        text: "TOTAL BAYAR: " + total,
-        width: 120,
-        height: 120
-    });
-}

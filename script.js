@@ -13,11 +13,10 @@ function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
 
- pesanan.forEach(p => {
+ [...pesanan].reverse().forEach(p => {
     let li = document.createElement("li");
     li.textContent = `${p.nama} - Rp ${p.harga}`;
-
-    list.prepend(li); // ⬅️ ini kuncinya
+    list.appendChild(li);
 });
 
     document.getElementById("total").innerText = total;

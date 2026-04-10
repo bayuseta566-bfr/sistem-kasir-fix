@@ -8,7 +8,7 @@ function tambah(nama, harga) {
     render();
 }
 
-// TAMPILKAN LIST
+// RENDER LIST
 function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
@@ -19,7 +19,6 @@ function render() {
         list.appendChild(li);
     });
 
-    // tampilkan total
     document.getElementById("total").innerText = total;
 }
 
@@ -33,15 +32,21 @@ document.getElementById("uang").addEventListener("input", function() {
 
 // SELESAI PESANAN
 function selesai() {
+
+    let namaPelanggan = document.getElementById("namaPelanggan").value;
+
+    if (!namaPelanggan) return alert("Isi nama pelanggan!");
     if (pesanan.length === 0) return alert("Belum ada pesanan!");
 
-    kirimData();
+    kirimData(namaPelanggan);
 
     alert("Pesanan selesai!");
 
+    // RESET
     pesanan = [];
     total = 0;
 
+    document.getElementById("namaPelanggan").value = "";
     document.getElementById("uang").value = "";
     document.getElementById("kembalian").value = "";
     document.getElementById("total").innerText = 0;
@@ -49,16 +54,17 @@ function selesai() {
     render();
 }
 
-// KIRIM KE GOOGLE SHEETS
-async function kirimData() {
+// KIRIM DATA
+async function kirimData(namaPelanggan) {
 
-    const url = "https://script.google.com/macros/s/AKfycbzocqRqr2ZAi9w31np5rw-n8k5g_LqOkjG8mQxr6kc_YJ9yVNsfBcskNbgOh0Pql1p_/exec";
+    const url = "https://script.google.com/macros/s/AKfycbwFS8YsqDLRRXmikLjTs4lI__u7BaYSiZGQBgg_PoqP04MaGgoWtR_8MtO9mfQ1VkKz/exec";
 
     let data = pesanan.map(p => ({
+        pelanggan: namaPelanggan,
         nama: p.nama,
         harga: p.harga
     }));
-console.log(data);
+
     await fetch(url, {
         method: "POST",
         body: JSON.stringify(data)

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Kasir d'Browns</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -22,25 +21,23 @@
         <div class="left">
 
             <div class="menu-box">
-                <button onclick="tambah('Ice Brown',10000)">Ice Brown 10.000</button>
-                <button onclick="tambah('mochacino',12000)">Mocachino 12.000</button>
-                <button onclick="tambah('Matcha Latte',12000)">Matcha 12.000</button>
+                <button onclick="tambah('Brown Ice',10000)">Brown Ice 10.000</button>
+                <button onclick="tambah('Mocachino',12000)">Mocachino 12.000</button>
+                <button onclick="tambah('Matcha Latte',12000)">Matcha Latte 12.000</button>
 
                 <button onclick="tambah('Oreo',12000)">Oreo 12.000</button>
-                <button onclick="tambah('kosong',)">kosong</button>
+                <button onclick="tambah('kosong',0)">kosong</button>
                 <button class="selesai" onclick="selesai()">Selesai</button>
             </div>
 
-            <!-- INPUT BARU -->
+            <!-- INPUT NAMA -->
             <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan">
 
-            <input type="number" id="uang" placeholder="Uang Pelanggan">
-            <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+            <input type="number" id="uang" placeholder="Uang pelanggan">
+            <input type="text" id="kembalian" placeholder="Jumlah kembalian" readonly>
 
             <h2>Total: Rp <span id="total">0</span></h2>
-            <div id="qrcode"></div> <img src="WhatsApp Image 2026-04-10 at 14.31.38.jpeg" class="qr-dana">
-            <p>Scan QR DANA</p>
-<p>Total: Rp <span id="total">0</span></p>
+
         </div>
 
         <!-- KANAN -->

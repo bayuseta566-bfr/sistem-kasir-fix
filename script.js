@@ -13,13 +13,16 @@ function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
 
-    pesanan.forEach(p => {
-        let li = document.createElement("li");
-        li.textContent = `${p.nama} - Rp ${p.harga}`;
-        list.appendChild(li);
-    });
+ pesanan.forEach(p => {
+    let li = document.createElement("li");
+    li.textContent = `${p.nama} - Rp ${p.harga}`;
+
+    list.prepend(li); // ⬅️ ini kuncinya
+});
 
     document.getElementById("total").innerText = total;
+    
+    generateQR();
 }
 
 // HITUNG KEMBALIAN
@@ -33,16 +36,19 @@ document.getElementById("uang").addEventListener("input", function() {
 // KIRIM DATA
 async function kirimData(namaPelanggan) {
 
-    const url = "https://script.google.com/macros/s/AKfycbxoewIdDkQKmGLJvVFH0JebNyL35VYNNhvolc8w-5ecuRnfjp2LR-YZAX5DFpRHSFK5/exec";
+    const url = "https://script.google.com/macros/s/AKfycbwRPfDaWEo3RkorcjrvmM2gefze_eR3FXvYXxoE1GGH6zGActtvg4HxJfsV3MsT_Uu6/exec";
 
-    let data = pesanan.map(p => ({
+    let data = {
         pelanggan: namaPelanggan,
-        nama: p.nama,
-        harga: p.harga
-    }));
+        pesanan: pesanan,
+        total: total
+    };
 
     await fetch(url, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
     });
 }
@@ -76,4 +82,15 @@ function selesai() {
     document.getElementById("total").innerText = 0;
 
     render();
+}
+
+//qr
+function generateQR() {
+    document.getElementById("qrcode").innerHTML = "";
+
+    new QRCode(document.getElementById("qrcode"), {
+        text: "TOTAL BAYAR: " + total,
+        width: 120,
+        height: 120
+    });
 }

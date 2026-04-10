@@ -105,3 +105,16 @@ function printStruk(namaPelanggan) {
     win.print();
 }
 
+function generateQR() {
+
+    let qrContainer = document.getElementById("qrcode");
+    qrContainer.innerHTML = "";
+
+    if (total <= 0) return;
+
+    new QRCode(qrContainer, {
+        text: "TOTAL:" + total,
+        width: 150,
+        height: 150
+    });
+}

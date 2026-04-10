@@ -51,38 +51,6 @@ async function kirimData(namaPelanggan) {
     });
 }
 
-// SELESAI
-function selesai() {
-
-    let namaPelanggan = document.getElementById("namaPelanggan").value;
-
-    if (!namaPelanggan) {
-        alert("Masukkan nama pelanggan!");
-        return;
-    }
-
-    if (pesanan.length === 0) {
-        alert("Belum ada pesanan!");
-        return;
-    }
-
-    kirimData(namaPelanggan);
-
-    alert("Pesanan selesai!");
-
-    printStruk(namaPelanggan);
-
-    // RESET
-    pesanan = [];
-    total = 0;
-
-    document.getElementById("namaPelanggan").value = "";
-    document.getElementById("uang").value = "";
-    document.getElementById("kembalian").value = "";
-    document.getElementById("total").innerText = 0;
-
-    render();
-}
 function printStruk(namaPelanggan) {
 
     let isi = `
@@ -117,4 +85,37 @@ function generateQR() {
         width: 150,
         height: 150
     });
+}
+
+// SELESAI
+function selesai() {
+
+    let namaPelanggan = document.getElementById("namaPelanggan").value;
+
+    if (!namaPelanggan) {
+        alert("Masukkan nama pelanggan!");
+        return;
+    }
+
+    if (pesanan.length === 0) {
+        alert("Belum ada pesanan!");
+        return;
+    }
+
+    kirimData(namaPelanggan);
+
+    alert("Pesanan selesai!");
+
+    printStruk(namaPelanggan);
+
+    // RESET
+    pesanan = [];
+    total = 0;
+
+    document.getElementById("namaPelanggan").value = "";
+    document.getElementById("uang").value = "";
+    document.getElementById("kembalian").value = "";
+    document.getElementById("total").innerText = 0;
+
+    render();
 }

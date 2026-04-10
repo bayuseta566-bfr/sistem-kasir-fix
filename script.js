@@ -20,7 +20,6 @@ function render() {
     });
 
     document.getElementById("total").innerText = total;
-    generateQR();
 }
 
 // HITUNG KEMBALIAN
@@ -36,22 +35,17 @@ async function kirimData(namaPelanggan) {
 
     const url = "https://script.google.com/macros/s/AKfycbxoewIdDkQKmGLJvVFH0JebNyL35VYNNhvolc8w-5ecuRnfjp2LR-YZAX5DFpRHSFK5/exec";
 
-    let data = {
+    let data = pesanan.map(p => ({
         pelanggan: namaPelanggan,
-        pesanan: pesanan,
-        total: total
-    };
+        nama: p.nama,
+        harga: p.harga
+    }));
 
     await fetch(url, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
         body: JSON.stringify(data)
     });
 }
-
-
 
 // SELESAI
 function selesai() {
@@ -72,8 +66,6 @@ function selesai() {
 
     alert("Pesanan selesai!");
 
-    printStruk(namaPelanggan);
-
     // RESET
     pesanan = [];
     total = 0;
@@ -85,4 +77,3 @@ function selesai() {
 
     render();
 }
-

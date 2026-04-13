@@ -46,6 +46,7 @@ async function kirimData(nama) {
     });
 }
 
+
 function selesai() {
     let nama = document.getElementById("nama").value;
 

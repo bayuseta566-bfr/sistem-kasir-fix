@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Kasir d'Browns</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Kasir d'Browns</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- QR LIB -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
+
 <body>
 
 <div class="container">
@@ -20,30 +24,27 @@
         <!-- KIRI -->
         <div class="left">
 
-            <div class="menu-box">
+            <div class="menu">
                 <button onclick="tambah('Brown Ice',10000)">Brown Ice 10.000</button>
                 <button onclick="tambah('Mocachino',12000)">Mocachino 12.000</button>
                 <button onclick="tambah('Matcha Latte',12000)">Matcha Latte 12.000</button>
 
                 <button onclick="tambah('Oreo',12000)">Oreo 12.000</button>
-                <button onclick="tambah('kosong',0)">kosong</button>
+                <button onclick="tambah('Kosong',0)">Kosong</button>
                 <button class="selesai" onclick="selesai()">Selesai</button>
             </div>
 
-            <!-- INPUT NAMA -->
-            <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan">
-
+            <input type="text" id="nama" placeholder="Nama Pelanggan">
             <input type="number" id="uang" placeholder="Uang pelanggan">
             <input type="text" id="kembalian" placeholder="Jumlah kembalian" readonly>
 
             <h2>Total: Rp <span id="total">0</span></h2>
-            
+
+            <div id="qrcode"></div>
 
         </div>
 
-
-      
-<!-- KANAN -->
+        <!-- KANAN -->
         <div class="right">
             <h2>Pesanan</h2>
             <ul id="list"></ul>

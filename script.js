@@ -13,73 +13,86 @@ function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
 
- [...pesanan].reverse().forEach(p => {
-    let li = document.createElement("li");
-    li.textContent = `${p.nama} - Rp ${p.harga}`;
-    list.appendChild(li);
-});
+    [...pesanan].reverse().forEach(p => {
+        let li = document.createElement("li");
+        li.textContent = `${p.nama} - Rp ${p.harga}`;
+        list.appendChild(li);
+    });
 
     document.getElementById("total").innerText = total;
-    
-    
+    generateQR();
 }
 
-// HITUNG KEMBALIAN
-document.getElementById("uang").addEventListener("input", function() {
+// KEMBALIAN
+document.getElementById("uang").addEventListener("input", function () {
     let uang = parseInt(this.value) || 0;
     let kembali = uang - total;
 
-    document.getElementById("kembalian").value = kembali >= 0 ? kembali : "Uang kurang";
+    document.getElementById("kembalian").value =
+        kembali >= 0 ? kembali : "Uang kurang";
 });
 
-// KIRIM DATA
-async function kirimData(namaPelanggan) {
+// QR
+function generateQR() {
+    let qr = document.getElementById("qrcode");
+    qr.innerHTML = "";
 
-    const url = "https://script.google.com/macros/s/AKfycbz-2CScdMbDusrFvJ2Hkx4-cJvL4rA-HB0EROOnv8pw6QR5lePpAhJIFizRgY_NpsDSZg/exec";
+    if (total <= 0) return;
 
-     let data = {
-        pelanggan: namaPelanggan,
+    new QRCode(qr, {
+        text: "Total Bayar: Rp " + total,
+        width: 120,
+        height: 120
+    });
+}
+
+// KIRIM DATA (FIX UTAMA)
+async function kirimData(nama) {
+
+    const url = "https://script.google.com/macros/s/AKfycbxjX4DoVn8vZUGLXmgT5sAVTF1CAArVWS5PI7v6aQ8LVupQkFm7XMypRfjA6Xqtwws/exec";
+
+    let data = {
+        pelanggan: nama,
         pesanan: pesanan,
         total: total
     };
 
-    await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    });
+    try {
+        await fetch(url, {
+            method: "POST",
+            mode: "no-cors", // penting
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 // SELESAI
 function selesai() {
 
-    let namaPelanggan = document.getElementById("namaPelanggan").value;
+    let nama = document.getElementById("nama").value;
 
-    if (!namaPelanggan) {
-        alert("Masukkan nama pelanggan!");
-        return;
-    }
+    if (!nama) return alert("Masukkan nama pelanggan!");
+    if (pesanan.length === 0) return alert("Belum ada pesanan!");
 
-    if (pesanan.length === 0) {
-        alert("Belum ada pesanan!");
-        return;
-    }
+    kirimData(nama);
 
-    kirimData(namaPelanggan);
-
-    alert("Pesanan selesai!");
+    alert("Pesanan berhasil!");
 
     // RESET
     pesanan = [];
     total = 0;
 
-    document.getElementById("namaPelanggan").value = "";
+    document.getElementById("nama").value = "";
     document.getElementById("uang").value = "";
     document.getElementById("kembalian").value = "";
     document.getElementById("total").innerText = 0;
+    document.getElementById("qrcode").innerHTML = "";
 
     render();
 }
-

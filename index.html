@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    
 <meta charset="UTF-8">
-<title>Kasir d'Browns</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasir Modern</title>
 <link rel="stylesheet" href="style.css">
-
-<!-- QR LIB -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body>
 
-<div class="container">
-
-    <!-- HEADER -->
     <div class="header">
-        <img src="logo terbaru-01 (1).png" class="logo">
-        <h1>TOKO d’Browns Generation</h1>
-    </div>
+    <img src="logo terbaru-01 (1).png" class="logo">
+    <h1>Kasir d’Browns Generation</h1>
+</div>
 
-    <div class="content">
+<div class="container">
+    
+    
 
-        <!-- KIRI -->
-        <div class="left">
+    <!-- LEFT (PESANAN) -->
+    <div class="left">
 
-            <div class="menu">
-                <button onclick="tambah('Brown Ice',10000)">Brown Ice 10.000</button>
-                <button onclick="tambah('Mocachino',12000)">Mocachino 12.000</button>
-                <button onclick="tambah('Matcha Latte',12000)">Matcha Latte 12.000</button>
+        <h2>Pesanan</h2>
+        <ul id="list"></ul>
 
-                <button onclick="tambah('Oreo',12000)">Oreo 12.000</button>
-                <button onclick="tambah('Kosong',0)">Kosong</button>
-                <button class="selesai" onclick="selesai()">Selesai</button>
-            </div>
-
-            <input type="text" id="nama" placeholder="Nama Pelanggan">
-            <input type="number" id="uang" placeholder="Uang pelanggan">
-            <input type="text" id="kembalian" placeholder="Jumlah kembalian" readonly>
-
-            <h2>Total: Rp <span id="total">0</span></h2>
-
-            <div id="qrcode"></div>
-
+        <div class="total-box">
+            <h3>Total: Rp <span id="total">0</span></h3>
         </div>
 
-        <!-- KANAN -->
-        <div class="right">
-            <h2>Pesanan</h2>
-            <ul id="list"></ul>
+        <input type="text" id="nama" placeholder="Nama Pelanggan">
+        <input type="number" id="uang" placeholder="Uang pelanggan">
+        <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+
+        <button class="btn-selesai" onclick="selesai()">Selesai</button>
+
+    </div>
+
+    <!-- RIGHT (MENU PRODUK) -->
+    <div class="right">
+
+        <h2>Menu</h2>
+
+        <div class="produk-grid">
+
+            <div class="card" onclick="tambah('Brown Ice',10000)">
+                <img src="browns.png">
+                <p>Brown Ice</p>
+                <span>10.000</span>
+            </div>
+
+            <div class="card" onclick="tambah('Mocachino',12000)">
+                <img src="mochacino.png">
+                <p>Mocachino</p>
+                <span>12.000</span>
+            </div>
+
+            <div class="card" onclick="tambah('Matcha Latte',12000)">
+                <img src="matcha.png">
+                <p>Matcha Latte</p>
+                <span>12.000</span>
+            </div>
+
+            <div class="card" onclick="tambah('Oreo',12000)">
+                <img src="oreo.png">
+                <p>Oreo</p>
+                <span>12.000</span>
+            </div>
+
         </div>
 
     </div>

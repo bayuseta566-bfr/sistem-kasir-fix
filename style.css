@@ -1,86 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial;
-    background: #cbd5e1;
 }
 
 .container {
+    display: flex;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    background: #9ca3af;
-    padding: 15px;
-    border-radius: 0 0 30px 30px;
-}
-
-.logo {
-    width: 60px;
-    margin-right: 15px;
-}
-
-.content {
-    display: flex;
-    flex: 1;
-    padding: 20px;
 }
 
 /* LEFT */
 .left {
-    width: 65%;
-    background: #b7e08a;
-    border-radius: 30px;
-    padding: 20px;
+    width: 40%;
+    background: #f1f5f9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.menu {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+#list {
+    flex: 1;
+    overflow-y: auto;
 }
 
-.menu button {
-    background: #fb923c;
-    border: none;
-    padding: 20px;
-    border-radius: 20px;
-    cursor: pointer;
+#list li {
+    background: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
 }
 
-.selesai {
-    background: #f97316;
+.total-box {
+    background: #22c55e;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px 0;
 }
 
 input {
-    width: 100%;
-    margin-top: 15px;
-    padding: 18px;
-    border-radius: 30px;
+    margin: 5px 0;
+    padding: 12px;
+    border-radius: 10px;
     border: none;
-    background: #9ca3af;
-    text-align: center;
+    background: #e2e8f0;
 }
 
-#qrcode {
+.btn-selesai {
+    background: #ef4444;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
     margin-top: 10px;
 }
 
 /* RIGHT */
 .right {
-    width: 35%;
-    background: #eab08c;
-    margin-left: 20px;
-    border-radius: 30px;
-    padding: 20px;
+    width: 60%;
+    background: #0ea5e9;
+    padding: 15px;
+    overflow-y: auto;
 }
 
-#list li {
+.produk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.card {
     background: white;
-    margin: 5px 0;
+    border-radius: 15px;
     padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
     border-radius: 10px;
+}
+
+.card p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.card span {
+    color: green;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+        height: 50%;
+    }
+}
+ <body>
+
+<div class="header">
+    <img src="logo.png" class="logo">
+    <h1>TOKO d’Browns Generation</h1>
+</div>
+
+<div class="container">
+
+    <div class="left">
+        <h2>Pesanan</h2>
+        <ul id="list"></ul>
+
+        <div class="total-box">
+            <h3>Total: Rp <span id="total">0</span></h3>
+        </div>
+
+        <input type="text" id="nama" placeholder="Nama Pelanggan">
+        <input type="number" id="uang" placeholder="Uang pelanggan">
+        <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+
+        <button class="btn-selesai" onclick="selesai()">Selesai</button>
+    </div>
+
+    <div class="right">
+        <h2>Menu</h2>
+
+        <div class="produk-grid">
+            <!-- card produk tetap -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+body {
+    margin: 0;
+    font-family: Arial;
+    overflow: hidden; /* ⛔ HILANGKAN SCROLL HALAMAN */
+}
+
+/* HEADER */
+.header {
+    height: 70px;
+    background: #1e293b;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 50px;
+    margin-right: 15px;
+}
+
+/* CONTAINER */
+.container {
+    display: flex;
+    height: calc(100vh - 70px); /* FULL SISA LAYAR */
+}
+
+/* LEFT */
+.left {
+    width: 40%;
+    background: #f1f5f9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#list {
+    flex: 1;
+    overflow-y: auto; /* scroll hanya di sini */
+}
+
+/* RIGHT */
+.right {
+    width: 60%;
+    background: #0ea5e9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
 }

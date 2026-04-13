@@ -37,29 +37,19 @@ async function kirimData(namaPelanggan) {
 
     const url = "https://script.google.com/macros/s/AKfycbz-2CScdMbDusrFvJ2Hkx4-cJvL4rA-HB0EROOnv8pw6QR5lePpAhJIFizRgY_NpsDSZg/exec";
 
-    let data = {
+     let data = {
         pelanggan: namaPelanggan,
         pesanan: pesanan,
         total: total
     };
 
-    console.log("DATA DIKIRIM:", data);
-
-    try {
-        let res = await fetch(url, {
-            method: "POST",
-            mode: "no-cors", // 🔥 ini kunci kalau masih gagal
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        console.log("REQUEST TERKIRIM");
-
-    } catch (error) {
-        console.error("ERROR:", error);
-    }
+    await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
 }
 
 // SELESAI

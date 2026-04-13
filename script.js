@@ -44,8 +44,23 @@ async function kirimData(namaPelanggan) {
     };
 
     console.log("DATA DIKIRIM:", data);
-}
 
+    try {
+        let res = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        let result = await res.text();
+        console.log("RESPONSE:", result);
+
+    } catch (error) {
+        console.error("ERROR:", error);
+    }
+}
 // SELESAI
 function selesai() {
 

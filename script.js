@@ -8,94 +8,59 @@ function tambah(nama, harga) {
     render();
 }
 
-// RENDER
+// TAMPILKAN LIST
 function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
 
-    [...pesanan].reverse().forEach(p => {
+    pesanan.forEach(p => {
         let li = document.createElement("li");
         li.textContent = `${p.nama} - Rp ${p.harga}`;
         list.appendChild(li);
     });
 
+    // tampilkan total
     document.getElementById("total").innerText = total;
 }
 
-// KEMBALIAN
-document.getElementById("uang").addEventListener("input", function () {
+// HITUNG KEMBALIAN
+document.getElementById("uang").addEventListener("input", function() {
     let uang = parseInt(this.value) || 0;
     let kembali = uang - total;
 
-    document.getElementById("kembalian").value =
-        kembali >= 0 ? kembali : "Uang kurang";
+    document.getElementById("kembalian").value = kembali >= 0 ? kembali : "Uang kurang";
 });
 
-// AUTO SCALE
-function scaleApp() {
-    const app = document.querySelector(".app");
-
-    // HP → JANGAN SCALE
-    if (window.innerWidth <= 768) {
-        app.style.transform = "none";
-        return;
-    }
-
-    // Laptop/Tablet → boleh scale
-    let scaleX = window.innerWidth / 1280;
-    let scaleY = window.innerHeight / 720;
-
-    let scale = Math.min(scaleX, scaleY);
-
-    app.style.transform = `scale(${scale})`;
-}
-
-window.addEventListener("resize", scaleApp);
-window.addEventListener("load", scaleApp);
-// KIRIM DATA
-async function kirimData(nama) {
-
-    const url = "https://script.google.com/macros/s/AKfycbxjX4DoVn8vZUGLXmgT5sAVTF1CAArVWS5PI7v6aQ8LVupQkFm7XMypRfjA6Xqtwws/exec";
-
-    let data = {
-        pelanggan: nama,
-        pesanan: pesanan,
-        total: total
-    };
-
-    try {
-        await fetch(url, {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-// SELESAI
+// SELESAI PESANAN
 function selesai() {
-
-    let nama = document.getElementById("nama").value;
-
-    if (!nama) return alert("Masukkan nama!");
     if (pesanan.length === 0) return alert("Belum ada pesanan!");
 
-    kirimData(nama);
+    kirimData();
 
     alert("Pesanan selesai!");
 
     pesanan = [];
     total = 0;
 
-    document.getElementById("nama").value = "";
     document.getElementById("uang").value = "";
     document.getElementById("kembalian").value = "";
+    document.getElementById("total").innerText = 0;
 
     render();
+}
+
+// KIRIM KE GOOGLE SHEETS
+async function kirimData() {
+
+    const url = "https://script.google.com/macros/s/AKfycbxjX4DoVn8vZUGLXmgT5sAVTF1CAArVWS5PI7v6aQ8LVupQkFm7XMypRfjA6Xqtwws/exec";
+
+    let data = pesanan.map(p => ({
+        nama: p.nama,
+        harga: p.harga
+    }));
+console.log(data);
+    await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data)
+    });
 }

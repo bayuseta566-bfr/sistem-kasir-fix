@@ -35,7 +35,7 @@ document.getElementById("uang").addEventListener("input", function() {
 // KIRIM DATA
 async function kirimData(namaPelanggan) {
 
-    const url = "https://script.google.com/macros/s/AKfycbzXmIzkLbAqvMhYofMAgDGo2u41Aa8sqV8T3f0za27n96QV28kopBrAWtSmFIeoJjJO/exec";
+    const url = "https://script.google.com/macros/s/AKfycbx5ckyzZFP-1n0Ujlm_IVJ1wVg2r9hCKwEq-LCRAUfrEUV4G79gLXeWcE7Zrr763knNKQ/exec";
 
     let data = {
         pelanggan: namaPelanggan,
@@ -50,6 +50,18 @@ async function kirimData(namaPelanggan) {
         },
         body: JSON.stringify(data)
     });
+
+    let res = await fetch(url, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+});
+
+let text = await res.text();
+console.log("RESPONSE:", text);
+    console.log("DATA DIKIRIM:", data);
 }
 
 // SELESAI

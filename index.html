@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kasir Modern</title>
+<title>Kasir d'Browns</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div class="app-wrapper">
+<div class="app">
+
+    <!-- HEADER -->
     <div class="header">
-    <img src="logo terbaru-01 (1).png" class="logo">
-    <h1>Kasir d’Browns Generation</h1>
+        <img src="logo terbaru-01 (1).png" class="logo">
+        <h1>Kasir d’Browns Generation</h1>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+
+        <!-- LEFT -->
+        <div class="left">
+            <h2>Pesanan</h2>
+            <ul id="list"></ul>
+
+            <div class="total-box">
+                Total: Rp <span id="total">0</span>
+            </div>
+
+            <input type="text" id="nama" placeholder="Nama Pelanggan">
+            <input type="number" id="uang" placeholder="Uang pelanggan">
+            <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+
+            <button class="btn-selesai" onclick="selesai()">Selesai</button>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="produk-grid">
+
+                <div class="card" onclick="tambah('Brown Ice',10000)">
+                    <img src="browns.png">
+                    <p>Brown Ice</p>
+                    <span>10.000</span>
+                </div>
+
+                <div class="card" onclick="tambah('Mocachino',12000)">
+                    <img src="mochacino.png">
+                    <p>Mocachino</p>
+                    <span>12.000</span>
+                </div>
+
+                <div class="card" onclick="tambah('Matcha Latte',12000)">
+                    <img src="matcha.png">
+                    <p>Matcha Latte</p>
+                    <span>12.000</span>
+                </div>
+
+                <div class="card" onclick="tambah('Oreo',12000)">
+                    <img src="oreo.png">
+                    <p>Oreo</p>
+                    <span>12.000</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 </div>
-
-<div class="container">
-    
-    
-
-    <!-- LEFT (PESANAN) -->
-    <div class="left">
-
-        <h2>Pesanan</h2>
-        <ul id="list"></ul>
-
-        <div class="total-box">
-            <h3>Total: Rp <span id="total">0</span></h3>
-        </div>
-
-        <input type="text" id="nama" placeholder="Nama Pelanggan">
-        <input type="number" id="uang" placeholder="Uang pelanggan">
-        <input type="text" id="kembalian" placeholder="Kembalian" readonly>
-
-        <button class="btn-selesai" onclick="selesai()">Selesai</button>
-
-    </div>
-
-    <!-- RIGHT (MENU PRODUK) -->
-    <div class="right">
-
-        <h2>Menu</h2>
-
-        <div class="produk-grid">
-
-            <div class="card" onclick="tambah('Brown Ice',10000)">
-                <img src="browns.png">
-                <p>Brown Ice</p>
-                <span>10.000</span>
-            </div>
-
-            <div class="card" onclick="tambah('Mocachino',12000)">
-                <img src="mochacino.png">
-                <p>Mocachino</p>
-                <span>12.000</span>
-            </div>
-
-            <div class="card" onclick="tambah('Matcha Latte',12000)">
-                <img src="matcha.png">
-                <p>Matcha Latte</p>
-                <span>12.000</span>
-            </div>
-
-            <div class="card" onclick="tambah('Oreo',12000)">
-                <img src="oreo.png">
-                <p>Oreo</p>
-                <span>12.000</span>
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
 
 <script src="script.js"></script>

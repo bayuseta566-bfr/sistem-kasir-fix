@@ -1,12 +1,14 @@
 let pesanan = [];
 let total = 0;
 
+// TAMBAH MENU
 function tambah(nama, harga) {
     pesanan.push({ nama, harga });
     total += harga;
     render();
 }
 
+// RENDER
 function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
@@ -20,14 +22,33 @@ function render() {
     document.getElementById("total").innerText = total;
 }
 
+// KEMBALIAN
 document.getElementById("uang").addEventListener("input", function () {
     let uang = parseInt(this.value) || 0;
     let kembali = uang - total;
+
     document.getElementById("kembalian").value =
         kembali >= 0 ? kembali : "Uang kurang";
 });
 
+// AUTO SCALE
+function scaleApp() {
+    const app = document.querySelector(".app");
+
+    let scaleX = window.innerWidth / 1280;
+    let scaleY = window.innerHeight / 720;
+
+    let scale = Math.min(scaleX, scaleY);
+
+    app.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener("resize", scaleApp);
+window.addEventListener("load", scaleApp);
+
+// KIRIM DATA
 async function kirimData(nama) {
+
     const url = "https://script.google.com/macros/s/AKfycbxjX4DoVn8vZUGLXmgT5sAVTF1CAArVWS5PI7v6aQ8LVupQkFm7XMypRfjA6Xqtwws/exec";
 
     let data = {
@@ -36,25 +57,32 @@ async function kirimData(nama) {
         total: total
     };
 
-    await fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    });
+    try {
+        await fetch(url, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+    } catch (err) {
+        console.error(err);
+    }
 }
 
+// SELESAI
 function selesai() {
+
     let nama = document.getElementById("nama").value;
 
-    if (!nama) return alert("Isi nama!");
+    if (!nama) return alert("Masukkan nama!");
     if (pesanan.length === 0) return alert("Belum ada pesanan!");
 
     kirimData(nama);
 
-    alert("Selesai!");
+    alert("Pesanan selesai!");
 
     pesanan = [];
     total = 0;

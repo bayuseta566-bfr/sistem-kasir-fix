@@ -9,60 +9,61 @@
 
 <body>
 
-    <div class="header">
-    <img src="logo terbaru-01 (1).png" class="logo">
-    <h1>TOKO d’Browns Generation</h1>
-</div>
-
 <div class="container">
 
-    <!-- LEFT (PESANAN) -->
-    <div class="left">
-
-        <h2>Pesanan</h2>
-        <ul id="list"></ul>
-
-        <div class="total-box">
-            <h3>Total: Rp <span id="total">0</span></h3>
-        </div>
-
-        <input type="text" id="nama" placeholder="Nama Pelanggan">
-        <input type="number" id="uang" placeholder="Uang pelanggan">
-        <input type="text" id="kembalian" placeholder="Kembalian" readonly>
-
-        <button class="btn-selesai" onclick="selesai()">Selesai</button>
-
+    <!-- HEADER -->
+    <div class="header">
+        <h1>d’Browns POS</h1>
     </div>
 
-    <!-- RIGHT (MENU PRODUK) -->
-    <div class="right">
+    <div class="main">
 
-        <h2>Menu</h2>
+        <!-- PESANAN -->
+        <div class="order-panel">
+            <h2>Pesanan</h2>
+            <ul id="list"></ul>
 
-        <div class="produk-grid">
-
-            <div class="card" onclick="tambah('Brown Ice',10000)">
-                <img src="browns.png">
-                <p>Brown Ice</p>
-                <span>10.000</span>
+            <div class="total-box">
+                <h3>Total: Rp <span id="total">0</span></h3>
             </div>
 
-            <div class="card" onclick="tambah('Mocachino',12000)">
-                <img src="mochacino.png">
-                <p>Mocachino</p>
-                <span>12.000</span>
-            </div>
+            <input type="text" id="nama" placeholder="Nama Pelanggan">
+            <input type="number" id="uang" placeholder="Uang">
 
-            <div class="card" onclick="tambah('Matcha Latte',12000)">
-                <img src="matcha.png">
-                <p>Matcha Latte</p>
-                <span>12.000</span>
-            </div>
+            <input type="text" id="kembalian" placeholder="Kembalian" readonly>
 
-            <div class="card" onclick="tambah('Oreo',12000)">
-                <img src="oreo.png">
-                <p>Oreo</p>
-                <span>12.000</span>
+            <button class="btn-selesai" onclick="selesai()">Selesai</button>
+        </div>
+
+        <!-- MENU -->
+        <div class="menu-panel">
+
+            <div class="menu-grid">
+
+                <div class="card" onclick="tambah('Brown Ice',10000)">
+                    <img src="img/brown.jpg">
+                    <p>Brown Ice</p>
+                    <span>Rp 10.000</span>
+                </div>
+
+                <div class="card" onclick="tambah('Mocachino',12000)">
+                    <img src="img/mocachino.jpg">
+                    <p>Mocachino</p>
+                    <span>Rp 12.000</span>
+                </div>
+
+                <div class="card" onclick="tambah('Matcha Latte',12000)">
+                    <img src="img/matcha.jpg">
+                    <p>Matcha</p>
+                    <span>Rp 12.000</span>
+                </div>
+
+                <div class="card" onclick="tambah('Oreo',12000)">
+                    <img src="img/oreo.jpg">
+                    <p>Oreo</p>
+                    <span>Rp 12.000</span>
+                </div>
+
             </div>
 
         </div>

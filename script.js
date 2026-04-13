@@ -11,10 +11,10 @@ function render() {
     let list = document.getElementById("list");
     list.innerHTML = "";
 
-    [...pesanan].reverse().forEach(p => {
+    pesanan.forEach(p => {
         let li = document.createElement("li");
         li.textContent = `${p.nama} - Rp ${p.harga}`;
-        list.appendChild(li);
+        list.prepend(li);
     });
 
     document.getElementById("total").innerText = total;
@@ -23,11 +23,13 @@ function render() {
 document.getElementById("uang").addEventListener("input", function () {
     let uang = parseInt(this.value) || 0;
     let kembali = uang - total;
+
     document.getElementById("kembalian").value =
         kembali >= 0 ? kembali : "Uang kurang";
 });
 
 async function kirimData(nama) {
+
     const url = "https://script.google.com/macros/s/AKfycbzN3ZWkkUPy_I3EMjEBZGekHJ0dRxh_RVEcLJjBza0bELoX4DXw-7F3FArAfuWymFmOBQ/exec";
 
     let data = {
@@ -46,16 +48,16 @@ async function kirimData(nama) {
     });
 }
 
-
 function selesai() {
+
     let nama = document.getElementById("nama").value;
 
-    if (!nama) return alert("Isi nama!");
-    if (pesanan.length === 0) return alert("Belum ada pesanan!");
+    if (!nama) return alert("Masukkan nama!");
+    if (pesanan.length === 0) return alert("Kosong!");
 
     kirimData(nama);
 
-    alert("Selesai!");
+    alert("Berhasil!");
 
     pesanan = [];
     total = 0;
@@ -66,4 +68,3 @@ function selesai() {
 
     render();
 }
-

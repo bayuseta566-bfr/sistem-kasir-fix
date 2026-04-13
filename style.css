@@ -181,13 +181,7 @@ body {
     padding: 10px;
 }
 
-.produk-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
-    height: 100%;
-    overflow-y: auto;
-}
+
 
 .card {
     background: white;

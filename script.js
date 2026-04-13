@@ -35,32 +35,33 @@ document.getElementById("uang").addEventListener("input", function() {
 // KIRIM DATA
 async function kirimData(namaPelanggan) {
 
-    const url = "https://script.google.com/macros/s/AKfycbx5ckyzZFP-1n0Ujlm_IVJ1wVg2r9hCKwEq-LCRAUfrEUV4G79gLXeWcE7Zrr763knNKQ/exec";
+    const url = "https://script.google.com/macros/s/AKfycbz-2CScdMbDusrFvJ2Hkx4-cJvL4rA-HB0EROOnv8pw6QR5lePpAhJIFizRgY_NpsDSZg/exec";
 
     let data = {
         pelanggan: namaPelanggan,
         pesanan: pesanan,
         total: total
     };
- 
+
     console.log("DATA DIKIRIM:", data);
 
     try {
         let res = await fetch(url, {
             method: "POST",
+            mode: "no-cors", // 🔥 ini kunci kalau masih gagal
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
         });
 
-        let result = await res.text();
-        console.log("RESPONSE:", result);
+        console.log("REQUEST TERKIRIM");
 
     } catch (error) {
         console.error("ERROR:", error);
     }
 }
+
 // SELESAI
 function selesai() {
 

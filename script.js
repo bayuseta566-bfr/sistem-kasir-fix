@@ -28,7 +28,7 @@ document.getElementById("uang").addEventListener("input", function () {
 });
 
 async function kirimData(nama) {
-    const url = "https://script.google.com/macros/s/AKfycbxjX4DoVn8vZUGLXmgT5sAVTF1CAArVWS5PI7v6aQ8LVupQkFm7XMypRfjA6Xqtwws/exec";
+    const url = "https://script.google.com/macros/s/AKfycbzN3ZWkkUPy_I3EMjEBZGekHJ0dRxh_RVEcLJjBza0bELoX4DXw-7F3FArAfuWymFmOBQ/exec";
 
     let data = {
         pelanggan: nama,

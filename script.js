@@ -43,24 +43,6 @@ async function kirimData(namaPelanggan) {
         total: total
     };
 
-    await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    });
-
-    let res = await fetch(url, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-});
-
-let text = await res.text();
-console.log("RESPONSE:", text);
     console.log("DATA DIKIRIM:", data);
 }
 

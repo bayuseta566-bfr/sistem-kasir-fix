@@ -69,6 +69,11 @@ function selesai() {
 function scaleApp() {
     const app = document.querySelector(".app");
 
+    if (window.innerWidth <= 768) {
+        app.style.transform = "scale(1)";
+        return;
+    }
+
     let scaleX = window.innerWidth / 1280;
     let scaleY = window.innerHeight / 720;
 
@@ -76,6 +81,3 @@ function scaleApp() {
 
     app.style.transform = `scale(${scale})`;
 }
-
-window.addEventListener("resize", scaleApp);
-window.addEventListener("load", scaleApp);

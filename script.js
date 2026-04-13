@@ -42,7 +42,7 @@ async function kirimData(namaPelanggan) {
         pesanan: pesanan,
         total: total
     };
-
+ 
     console.log("DATA DIKIRIM:", data);
 
     try {

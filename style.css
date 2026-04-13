@@ -113,42 +113,6 @@ input {
         height: 50%;
     }
 }
- <body>
-
-<div class="header">
-    <img src="logo.png" class="logo">
-    <h1>TOKO d’Browns Generation</h1>
-</div>
-
-<div class="container">
-
-    <div class="left">
-        <h2>Pesanan</h2>
-        <ul id="list"></ul>
-
-        <div class="total-box">
-            <h3>Total: Rp <span id="total">0</span></h3>
-        </div>
-
-        <input type="text" id="nama" placeholder="Nama Pelanggan">
-        <input type="number" id="uang" placeholder="Uang pelanggan">
-        <input type="text" id="kembalian" placeholder="Kembalian" readonly>
-
-        <button class="btn-selesai" onclick="selesai()">Selesai</button>
-    </div>
-
-    <div class="right">
-        <h2>Menu</h2>
-
-        <div class="produk-grid">
-            <!-- card produk tetap -->
-        </div>
-    </div>
-
-</div>
-
-</body>
-
 body {
     margin: 0;
     font-family: Arial;
@@ -199,3 +163,10 @@ body {
     flex-direction: column;
 }
 
+.produk-grid {
+    flex: 1;
+    overflow-y: auto; /* scroll hanya produk */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}

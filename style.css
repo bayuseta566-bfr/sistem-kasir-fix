@@ -101,8 +101,10 @@ input {
 
 .produk-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 10px;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .card {
@@ -118,4 +120,37 @@ input {
     height: 100px;
     object-fit: cover;
     border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+
+    .app {
+        width: 100vw;
+        height: 100vh;
+        transform: scale(1) !important;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 100%;
+        height: 40%;
+    }
+
+    .right {
+        width: 100%;
+        height: 60%;
+    }
+
+    .produk-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

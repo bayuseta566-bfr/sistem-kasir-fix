@@ -9,57 +9,59 @@
 
 <body>
 
-<div class="container">
+<div class="app">
 
     <!-- HEADER -->
-    <div class="header">
-        <h1>d’Browns POS</h1>
+    <div class="topbar">
+        <h2>d’Browns POS</h2>
     </div>
 
     <div class="main">
 
-        <!-- PESANAN -->
+        <!-- KIRI (PESANAN) -->
         <div class="order-panel">
-            <h2>Pesanan</h2>
+
+            <h3>Pesanan</h3>
+
             <ul id="list"></ul>
 
-            <div class="total-box">
-                <h3>Total: Rp <span id="total">0</span></h3>
+            <div class="payment">
+                <input type="text" id="nama" placeholder="Nama Pelanggan">
+                <input type="number" id="uang" placeholder="Uang">
+                <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+
+                <h2>Total: Rp <span id="total">0</span></h2>
+
+                <button class="btn-selesai" onclick="selesai()">Selesai</button>
             </div>
 
-            <input type="text" id="nama" placeholder="Nama Pelanggan">
-            <input type="number" id="uang" placeholder="Uang">
-
-            <input type="text" id="kembalian" placeholder="Kembalian" readonly>
-
-            <button class="btn-selesai" onclick="selesai()">Selesai</button>
         </div>
 
-        <!-- MENU -->
+        <!-- KANAN (MENU) -->
         <div class="menu-panel">
 
             <div class="menu-grid">
 
                 <div class="card" onclick="tambah('Brown Ice',10000)">
-                    <img src="img/brown.jpg">
+                    <img src="assets/brown.jpg">
                     <p>Brown Ice</p>
                     <span>Rp 10.000</span>
                 </div>
 
                 <div class="card" onclick="tambah('Mocachino',12000)">
-                    <img src="img/mocachino.jpg">
+                    <img src="assets/mocachino.jpg">
                     <p>Mocachino</p>
                     <span>Rp 12.000</span>
                 </div>
 
                 <div class="card" onclick="tambah('Matcha Latte',12000)">
-                    <img src="img/matcha.jpg">
-                    <p>Matcha</p>
+                    <img src="assets/matcha.jpg">
+                    <p>Matcha Latte</p>
                     <span>Rp 12.000</span>
                 </div>
 
                 <div class="card" onclick="tambah('Oreo',12000)">
-                    <img src="img/oreo.jpg">
+                    <img src="assets/oreo.jpg">
                     <p>Oreo</p>
                     <span>Rp 12.000</span>
                 </div>

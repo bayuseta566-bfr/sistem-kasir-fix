@@ -1,20 +1,20 @@
 body {
     margin: 0;
-    font-family: Arial;
-    background: #1e293b;
-    color: white;
+    font-family: 'Segoe UI';
+    background: #f1f5f9;
 }
 
-.container {
+.app {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.header {
+/* HEADER */
+.topbar {
     background: #0ea5e9;
+    color: white;
     padding: 15px;
-    text-align: center;
 }
 
 /* MAIN */
@@ -23,68 +23,70 @@ body {
     flex: 1;
 }
 
-/* ORDER PANEL */
+/* LEFT PANEL */
 .order-panel {
-    width: 30%;
-    background: #111827;
+    width: 35%;
+    background: white;
     padding: 15px;
     display: flex;
     flex-direction: column;
 }
 
-.order-panel ul {
+#list {
     flex: 1;
-    list-style: none;
-    padding: 0;
+    overflow-y: auto;
 }
 
-.order-panel li {
-    background: #374151;
+#list li {
+    background: #e2e8f0;
     margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
 }
 
-.total-box {
-    margin-top: 10px;
-}
-
-input {
-    margin-top: 10px;
+/* PAYMENT */
+.payment input {
+    width: 100%;
+    margin: 5px 0;
     padding: 10px;
-    border-radius: 10px;
-    border: none;
 }
 
+/* BUTTON */
 .btn-selesai {
-    margin-top: 10px;
-    padding: 15px;
     background: #22c55e;
-    border: none;
-    border-radius: 10px;
     color: white;
-}
-
-/* MENU */
-.menu-panel {
-    width: 70%;
-    background: #0ea5e9;
     padding: 15px;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
+/* RIGHT PANEL */
+.menu-panel {
+    width: 65%;
+    padding: 10px;
+}
+
+/* GRID */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
 }
 
+/* CARD */
 .card {
     background: white;
-    color: black;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 10px;
     text-align: center;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card img {
@@ -96,18 +98,15 @@ input {
 
 /* RESPONSIVE HP */
 @media (max-width: 768px) {
-
     .main {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .order-panel {
-        width: 100%;
-        height: 40%;
+        width: 50%;
     }
 
     .menu-panel {
-        width: 100%;
-        height: 60%;
+        width: 50%;
     }
 }

@@ -65,7 +65,6 @@ function selesai() {
     document.getElementById("nama").value = "";
     document.getElementById("uang").value = "";
     document.getElementById("kembalian").value = "";
-    document.getElementById("total").innerText = 0;
 
     render();
 }

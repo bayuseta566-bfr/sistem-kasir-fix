@@ -49,21 +49,20 @@ async function selesai(){
 
     const url = "https://script.google.com/macros/s/AKfycbwGloVG9W59-zqDM4pyOzLuYz6R8iTBtJygIJZM-Usi1m3T5JDuAtVaAOvxX8ZPtYu6/exec";
 
-    for(let item of pesanan){
-        await fetch(url,{
-            method:"POST",
-            mode:"no-cors",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({
-                waktu:new Date().toLocaleString(),
-                pelanggan:namaPelanggan,
-                menu:item.nama,
-                qty:item.qty
-            })
-        });
-    }
+    for (let item of pesanan) {
+    await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+            waktu: new Date().toLocaleString(),
+            pelanggan: namaPelanggan,
+            menu: item.nama,
+            qty: item.qty
+        })
+    });
+}
 
     alert("Pesanan selesai");
 

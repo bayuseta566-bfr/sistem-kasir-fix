@@ -47,7 +47,7 @@ async function selesai(){
     let namaPelanggan = document.getElementById("namaPelanggan").value;
     if(!namaPelanggan) return alert("Isi nama pelanggan");
 
-    const url = "https://script.google.com/macros/s/AKfycbzWLXTpYMp_YYx_uwLiMjVDUFtxwnMHHe7UCMSZh_2BoKsf6BlB2CoHih2_VFPhlx7U/exec";
+    const url = "https://script.google.com/macros/s/AKfycbwGloVG9W59-zqDM4pyOzLuYz6R8iTBtJygIJZM-Usi1m3T5JDuAtVaAOvxX8ZPtYu6/exec";
 
     for(let item of pesanan){
         await fetch(url,{

@@ -59,11 +59,12 @@ async function selesai(){
             waktu: new Date().toLocaleString(),
             pelanggan: namaPelanggan,
             menu: item.nama,
-            qty: item.qty
+            qty: item.qty,
+            harga: item.harga,
+            subtotal: item.subtotal
         })
     });
 }
-
     alert("Pesanan selesai");
 
     pesanan = [];

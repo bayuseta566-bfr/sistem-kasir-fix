@@ -3,73 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kasir Modern</title>
+<title>Kasir POS</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="app">
 
-    <!-- HEADER -->
-    <div class="topbar">
-        <h2>Kasir d’Browns</h2>
+    <!-- PANEL PESANAN -->
+    <div class="order-panel">
+        <div class="order-header">
+            <h2>Pesanan</h2>
+            <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan">
+        </div>
+
+        <div class="order-list" id="list"></div>
+
+        <div class="total-box">
+            <div>Total: Rp <span id="total">0</span></div>
+            <input type="number" id="uang" placeholder="Uang pelanggan">
+            <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+            <button class="finish-btn" onclick="selesai()">Selesai</button>
+        </div>
     </div>
 
-    <div class="main">
+    <!-- PANEL MENU -->
+    <div class="menu-panel">
 
-        <!-- KIRI (PESANAN) -->
-        <div class="order-panel">
+        <div class="menu-header">
+            <h2>Menu Produk</h2>
+        </div>
 
-            <h3>Pesanan</h3>
+        <div class="menu-grid">
 
-            <ul id="list"></ul>
+            <div class="menu-card" onclick="tambah('Brown Ice',10000)">
+                <img src="browns.png">
+                <p>Brown Ice</p>
+                <span>10.000</span>
+            </div>
 
-            <div class="payment">
-                <input type="text" id="nama" placeholder="Nama Pelanggan">
-                <input type="number" id="uang" placeholder="Uang">
-                <input type="text" id="kembalian" placeholder="Kembalian" readonly>
+            <div class="menu-card" onclick="tambah('Mocachino',12000)">
+                <img src="mochacino.png">
+                <p>Mocachino</p>
+                <span>12.000</span>
+            </div>
 
-                <h2>Total: Rp <span id="total">0</span></h2>
+            <div class="menu-card" onclick="tambah('Matcha Latte',12000)">
+                <img src="matcha.jpg">
+                <p>Matcha Latte</p>
+                <span>12.000</span>
+            </div>
 
-                <button class="btn-selesai" onclick="selesai()">Selesai</button>
+            <div class="menu-card" onclick="tambah('Oreo',12000)">
+                <img src="oreo.jpg">
+                <p>Oreo</p>
+                <span>12.000</span>
             </div>
 
         </div>
-
-        <!-- KANAN (MENU) -->
-        <div class="menu-panel">
-
-            <div class="menu-grid">
-
-                <div class="card" onclick="tambah('Brown Ice',10000)">
-                    <img src="browns.png">
-                    <p>Brown Ice</p>
-                    <span>Rp 10.000</span>
-                </div>
-
-                <div class="card" onclick="tambah('Mocachino',12000)">
-                    <img src="mochacino.png">
-                    <p>Mocachino</p>
-                    <span>Rp 12.000</span>
-                </div>
-
-                <div class="card" onclick="tambah('Matcha Latte',12000)">
-                    <img src="matcha.png">
-                    <p>Matcha Latte</p>
-                    <span>Rp 12.000</span>
-                </div>
-
-                <div class="card" onclick="tambah('Oreo',12000)">
-                    <img src="oreo.png">
-                    <p>Oreo</p>
-                    <span>Rp 12.000</span>
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
 </div>

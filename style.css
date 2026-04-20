@@ -1,112 +1,118 @@
-body {
+* {
     margin: 0;
-    font-family: 'Segoe UI';
-    background: #f1f5f9;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #0ea5e9;
 }
 
 .app {
+    display: flex;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-/* HEADER */
-.topbar {
-    background: #0ea5e9;
-    color: white;
-    padding: 15px;
-}
-
-/* MAIN */
-.main {
-    display: flex;
-    flex: 1;
-}
-
-/* LEFT PANEL */
+/* ORDER PANEL */
 .order-panel {
-    width: 35%;
-    background: white;
-    padding: 15px;
+    width: 40%;
+    background: #f1f5f9;
     display: flex;
     flex-direction: column;
 }
 
-#list {
+.order-header {
+    padding: 15px;
+    background: #0284c7;
+    color: white;
+}
+
+.order-header input {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.order-list {
     flex: 1;
     overflow-y: auto;
-}
-
-#list li {
-    background: #e2e8f0;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* PAYMENT */
-.payment input {
-    width: 100%;
-    margin: 5px 0;
     padding: 10px;
 }
 
-/* BUTTON */
-.btn-selesai {
-    background: #22c55e;
-    color: white;
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: white;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.total-box {
     padding: 15px;
-    border: none;
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
+    background: #16a34a;
+    color: white;
 }
 
-/* RIGHT PANEL */
-.menu-panel {
-    width: 65%;
+.total-box input {
+    width: 100%;
+    margin-top: 10px;
     padding: 10px;
 }
 
-/* GRID */
+.finish-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background: #dc2626;
+    color: white;
+    border: none;
+}
+
+/* MENU PANEL */
+.menu-panel {
+    width: 60%;
+    background: #0284c7;
+    padding: 15px;
+}
+
+.menu-header {
+    color: white;
+    margin-bottom: 15px;
+}
+
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 15px;
 }
 
-/* CARD */
-.card {
+.menu-card {
     background: white;
     border-radius: 10px;
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card img {
+.menu-card img {
     width: 100%;
     height: 100px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
-/* RESPONSIVE HP */
-@media (max-width: 768px) {
-    .main {
+/* RESPONSIVE */
+@media(max-width:768px){
+    .app{
         flex-direction: row;
     }
-
-    .order-panel {
-        width: 50%;
+    .order-panel{
+        width: 45%;
     }
-
-    .menu-panel {
-        width: 50%;
+    .menu-panel{
+        width: 55%;
     }
 }

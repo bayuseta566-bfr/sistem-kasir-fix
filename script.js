@@ -30,7 +30,7 @@ document.getElementById("uang").addEventListener("input", function () {
 
 async function kirimData(nama) {
 
-    const url = "https://script.google.com/macros/s/AKfycbzN3ZWkkUPy_I3EMjEBZGekHJ0dRxh_RVEcLJjBza0bELoX4DXw-7F3FArAfuWymFmOBQ/exec";
+    const url = "https://script.google.com/macros/s/AKfycbxyyaJXHYuyobBnMTVblx8PR8-XsJWs5iraqqqsRC0w0_hk04-nQU8-eTeoxfQEKkN6/exec";
 
     let data = {
         pelanggan: nama,
